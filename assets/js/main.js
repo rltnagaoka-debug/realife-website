@@ -81,6 +81,50 @@
     counters.forEach((el) => ioCount.observe(el));
   }
 
+  /* FAQ accordion */
+  document.querySelectorAll(".faq-item").forEach((item) => {
+    const q = item.querySelector(".faq-q");
+    const a = item.querySelector(".faq-a");
+    if (!q || !a) return;
+    q.addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-open");
+      document.querySelectorAll(".faq-item.is-open").forEach((open) => {
+        if (open !== item) {
+          open.classList.remove("is-open");
+          open.querySelector(".faq-a").style.maxHeight = null;
+        }
+      });
+      item.classList.toggle("is-open", !isOpen);
+      a.style.maxHeight = !isOpen ? a.scrollHeight + "px" : null;
+    });
+  });
+
+  /* Property listing filter (bukken page) */
+  const toolbar = document.querySelector(".bukken-toolbar");
+  if (toolbar) {
+    const buttons = toolbar.querySelectorAll("button");
+    const cards = document.querySelectorAll(".bukken-grid [data-area]");
+    const countEl = document.querySelector(".bukken-count strong");
+    const emptyEl = document.querySelector(".bukken-empty");
+    const applyFilter = (area) => {
+      let visible = 0;
+      cards.forEach((card) => {
+        const match = area === "all" || card.dataset.area === area;
+        card.style.display = match ? "" : "none";
+        if (match) visible++;
+      });
+      if (countEl) countEl.textContent = visible;
+      if (emptyEl) emptyEl.classList.toggle("is-visible", visible === 0);
+    };
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        applyFilter(btn.dataset.area);
+      });
+    });
+  }
+
   /* Back to top */
   const toTop = document.querySelector(".to-top");
   if (toTop) {
