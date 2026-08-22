@@ -16,6 +16,8 @@
   if (navToggle && mobileNav) {
     const closeNav = () => {
       navToggle.classList.remove("is-active");
+      navToggle.setAttribute("aria-label", "メニューを開く");
+      navToggle.setAttribute("aria-expanded", "false");
       mobileNav.classList.remove("is-open");
       header && header.classList.remove("is-open");
       document.body.style.overflow = "";
@@ -23,6 +25,8 @@
     navToggle.addEventListener("click", () => {
       const willOpen = !mobileNav.classList.contains("is-open");
       navToggle.classList.toggle("is-active", willOpen);
+      navToggle.setAttribute("aria-label", willOpen ? "メニューを閉じる" : "メニューを開く");
+      navToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
       mobileNav.classList.toggle("is-open", willOpen);
       header && header.classList.toggle("is-open", willOpen);
       document.body.style.overflow = willOpen ? "hidden" : "";
