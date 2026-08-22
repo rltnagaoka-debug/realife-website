@@ -1493,6 +1493,41 @@ button {
   letter-spacing: 0.04em;
 }
 
+/* Financing support note (used on 売買・収益不動産) */
+.finance-support {
+  margin-top: 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+  max-width: 640px;
+}
+.finance-support h3 {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  color: var(--navy-900);
+  margin-bottom: 14px;
+}
+.finance-support > p {
+  color: var(--ink-700);
+  font-size: 14.5px;
+  margin-bottom: 22px;
+}
+.finance-banks {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.finance-banks-label {
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  color: var(--ink-500);
+  margin-bottom: 8px;
+}
+.finance-banks-list {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--navy-900);
+}
+
 /* ==========================================================================
    Contact
    ========================================================================== */
