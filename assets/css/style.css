@@ -1317,11 +1317,19 @@ button {
     gap: 64px;
   }
   .cp-col-president {
+    position: relative;
     margin-top: 0;
     padding-top: 0;
     border-top: none;
-    border-left: 1px solid var(--line);
-    padding-left: 64px;
+  }
+  .cp-col-president::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -32px;
+    width: 1px;
+    background: var(--line);
   }
 }
 .cp-heading {
@@ -1329,6 +1337,8 @@ button {
   font-size: clamp(20px, 2.4vw, 24px);
   color: var(--navy-900);
   margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
   letter-spacing: 0.02em;
 }
 .cp-facts {
@@ -1395,10 +1405,6 @@ button {
   height: 18px;
   margin-top: 2px;
   color: var(--gold-700);
-}
-.cp-person {
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
 }
 .cp-role {
   font-size: 12.5px;
