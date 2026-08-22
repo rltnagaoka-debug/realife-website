@@ -876,9 +876,9 @@ button {
   gap: 24px;
   margin-top: 40px;
 }
-@media (min-width: 700px) {
+@media (min-width: 600px) {
   .property-teaser-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .property-card {
@@ -1374,7 +1374,7 @@ button {
   right: 0;
   z-index: 400;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   background: var(--white);
   box-shadow: 0 -6px 24px rgba(10, 26, 51, 0.1);
 }
@@ -1404,6 +1404,9 @@ button {
 }
 .mobile-cta-bar .cta-line {
   color: #06c755;
+}
+.mobile-cta-bar .cta-tel {
+  color: var(--navy-700);
 }
 .mobile-cta-bar .cta-form {
   background: var(--gold-500);
