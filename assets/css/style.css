@@ -1296,7 +1296,20 @@ button {
 /* Company + President combined summary section */
 .cp-grid {
   display: grid;
-  gap: 48px;
+  gap: 0;
+}
+.cp-col {
+  display: flex;
+  flex-direction: column;
+}
+.cp-col > .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+.cp-col-president {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
 }
 @media (min-width: 900px) {
   .cp-grid {
@@ -1304,6 +1317,9 @@ button {
     gap: 64px;
   }
   .cp-col-president {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
     border-left: 1px solid var(--line);
     padding-left: 64px;
   }
@@ -1361,25 +1377,24 @@ button {
 .cp-points {
   list-style: none;
   display: grid;
-  gap: 13px;
+  gap: 15px;
   margin: 0 0 28px;
   padding: 0;
 }
 .cp-points li {
-  position: relative;
-  padding-left: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
   font-size: 14px;
   line-height: 1.6;
   color: var(--ink-700);
 }
-.cp-points li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.7em;
-  width: 12px;
-  height: 1px;
-  background: var(--gold-500);
+.cp-check {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  color: var(--gold-700);
 }
 .cp-person {
   padding-top: 20px;
