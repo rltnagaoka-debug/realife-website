@@ -51,6 +51,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 body {
   margin: 0;
@@ -284,6 +286,7 @@ button {
   gap: 10px;
   color: var(--navy-900);
   font-family: var(--font-serif);
+  flex-shrink: 0;
 }
 .brand-logo {
   width: 36px;
@@ -344,6 +347,7 @@ button {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
 }
 @media (max-width: 380px) {
   .header-actions {
