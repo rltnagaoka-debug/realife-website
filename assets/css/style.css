@@ -743,26 +743,18 @@ button {
   overflow: hidden;
   aspect-ratio: 4 / 5;
 }
-.about-frame::before {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border: 1px solid var(--gold-500);
-  z-index: 2;
-  pointer-events: none;
-}
 .about-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center center;
   display: block;
+  opacity: 1;
+  filter: none;
+  mix-blend-mode: normal;
 }
 .about-frame.about-frame-wide {
   aspect-ratio: 5 / 4;
-}
-.about-frame.about-frame-wide::before {
-  display: none;
 }
 .about-frame.about-frame-wide::after {
   content: "";
@@ -1474,12 +1466,18 @@ button {
   gap: 16px;
 }
 .cp-avatar {
-  width: 64px;
-  height: 80px;
+  width: 80px;
+  height: 100px;
   border-radius: var(--radius);
   object-fit: cover;
   object-position: center top;
   flex-shrink: 0;
+}
+@media (min-width: 900px) {
+  .cp-avatar {
+    width: 96px;
+    height: 120px;
+  }
 }
 .cp-role {
   font-size: 12.5px;
