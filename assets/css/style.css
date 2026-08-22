@@ -1358,6 +1358,29 @@ button {
   font-size: 14.5px;
   margin: 20px 0 28px;
 }
+.cp-points {
+  list-style: none;
+  display: grid;
+  gap: 13px;
+  margin: 0 0 28px;
+  padding: 0;
+}
+.cp-points li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-700);
+}
+.cp-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 12px;
+  height: 1px;
+  background: var(--gold-500);
+}
 .cp-person {
   padding-top: 20px;
   border-top: 1px solid var(--line);
