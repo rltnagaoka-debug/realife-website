@@ -483,10 +483,22 @@ button {
   inset: 0;
   z-index: 0;
 }
-.hero-media svg {
+.hero-media-img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  object-position: 65% 50%;
   animation: heroZoom 26s var(--ease-slow) forwards;
+}
+@media (max-width: 900px) {
+  .hero-media-img {
+    object-position: 78% 50%;
+  }
+}
+@media (max-width: 480px) {
+  .hero-media-img {
+    object-position: 88% 50%;
+  }
 }
 .hero-media::after {
   content: "";
@@ -494,9 +506,9 @@ button {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(6, 14, 28, 0.35) 0%,
-    rgba(6, 14, 28, 0.4) 40%,
-    rgba(6, 14, 28, 0.88) 100%
+    rgba(6, 14, 28, 0.32) 0%,
+    rgba(6, 14, 28, 0.38) 40%,
+    rgba(6, 14, 28, 0.86) 100%
   );
 }
 .hero-content {
@@ -610,7 +622,7 @@ button {
   to { transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-media svg {
+  .hero-media-img {
     animation: none;
   }
 }
