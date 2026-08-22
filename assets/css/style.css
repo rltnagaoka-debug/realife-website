@@ -310,19 +310,10 @@ button {
   font-weight: 700;
   letter-spacing: 0.03em;
 }
-.brand-sub {
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.55);
+.main-nav {
   display: none;
 }
-@media (min-width: 768px) {
-  .brand-sub {
-    display: inline;
-  }
-}
-
-.main-nav {
+.site-header.is-open .main-nav {
   display: none;
 }
 @media (min-width: 1240px) {
@@ -363,6 +354,9 @@ button {
   align-items: center;
   gap: 18px;
   flex-shrink: 0;
+}
+.site-header.is-open .header-actions .btn-gold {
+  display: none;
 }
 @media (max-width: 380px) {
   .header-actions {
