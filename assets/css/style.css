@@ -761,6 +761,9 @@ button {
 .about-frame.about-frame-wide {
   aspect-ratio: 5 / 4;
 }
+.about-frame.about-frame-wide::before {
+  display: none;
+}
 .about-frame.about-frame-wide::after {
   content: "";
   position: absolute;
