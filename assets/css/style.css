@@ -1468,6 +1468,19 @@ button {
   margin-top: 2px;
   color: var(--gold-700);
 }
+.cp-person {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.cp-avatar {
+  width: 64px;
+  height: 80px;
+  border-radius: var(--radius);
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
+}
 .cp-role {
   font-size: 12.5px;
   letter-spacing: 0.1em;
