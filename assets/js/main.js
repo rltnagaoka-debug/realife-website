@@ -47,6 +47,22 @@
     if (radio) radio.checked = true;
   }
 
+  /* Contact form: note which listing an inquiry came from via ?property=,
+     using only the public display name (never the internal building name
+     or exact address) so the message body still exposes nothing more than
+     what's already shown on the listing card. */
+  const contactPropertyMap = {
+    "fukuoka-iikura": "福岡市早良区飯倉5丁目 一棟収益マンション",
+    "kurume-nishimachi": "久留米市西町 一棟収益アパート",
+  };
+  const contactPropertyParam = new URLSearchParams(location.search).get("property");
+  if (contactPropertyParam && contactPropertyMap[contactPropertyParam]) {
+    const messageEl = document.getElementById("contact-message");
+    if (messageEl && !messageEl.value) {
+      messageEl.value = "【お問い合わせ物件】" + contactPropertyMap[contactPropertyParam] + "\n\n";
+    }
+  }
+
   /* Contact form: single deliberate jump to the real form, once the page
      layout has actually settled — the hash was already stripped inline in
      <head> so the browser's own anchor jump never fires and fights with

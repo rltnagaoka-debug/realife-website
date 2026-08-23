@@ -1117,8 +1117,9 @@ button {
   object-fit: cover;
   display: block;
 }
-#property-gurichine {
-  /* This card carries .reveal, whose fade-in transform still shifts it
+#property-fukuoka-iikura,
+#property-kurume-nishimachi {
+  /* These cards carry .reveal, whose fade-in transform still shifts them
      upward by ~22px right after a same-document anchor jump lands;
      pad the target so the header never overlaps it once that settles. */
   scroll-margin-top: 24px;
@@ -1149,6 +1150,7 @@ button {
   font-family: var(--font-serif);
   font-size: 19px;
   font-weight: 700;
+  line-height: 1.3;
   color: var(--navy-900);
   margin: 0 0 6px;
 }
@@ -1171,6 +1173,62 @@ button {
   font-size: 10.5px;
   line-height: 1.6;
   color: var(--ink-500);
+}
+.property-note {
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink-500);
+}
+
+/* Top-page teaser grid: only real, currently-live listings — keep both
+   cards' image height, card height, and button row aligned regardless of
+   small differences in meta text length. */
+.property-teaser-grid .property-card {
+  display: flex;
+  flex-direction: column;
+}
+.property-teaser-grid .property-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.property-teaser-grid .property-actions {
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+/* Real-listing cards on the properties page: same top/bottom alignment
+   treatment as the teaser-grid pair above, scoped to just these two
+   cards so the sample listings below are untouched. */
+#property-fukuoka-iikura,
+#property-kurume-nishimachi {
+  display: flex;
+  flex-direction: column;
+}
+#property-fukuoka-iikura .property-body,
+#property-kurume-nishimachi .property-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#property-fukuoka-iikura .property-cta,
+#property-kurume-nishimachi .property-cta {
+  margin-top: auto;
+}
+
+/* Reserve two lines for the property name so a one-line name and a
+   two-line name still leave price/meta/button starting at the same
+   height across the two cards — desktop only; mobile stacks the cards
+   so the fixed reservation would just leave empty space. */
+@media (min-width: 600px) {
+  .property-teaser-grid .property-name,
+  #property-fukuoka-iikura .property-name,
+  #property-kurume-nishimachi .property-name {
+    min-height: 2.6em;
+    display: flex;
+    align-items: flex-end;
+  }
 }
 
 /* ==========================================================================
