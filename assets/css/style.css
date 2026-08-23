@@ -551,7 +551,7 @@ button {
 }
 @media (max-width: 480px) {
   .hero-media-img {
-    object-position: 88% 50%;
+    object-position: 52% 50%;
   }
 }
 .hero-media::after {
