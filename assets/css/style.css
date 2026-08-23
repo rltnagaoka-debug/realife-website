@@ -1439,6 +1439,21 @@ button {
   border-bottom: 1px solid var(--line);
   letter-spacing: 0.02em;
 }
+.cp-logo {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0 20px;
+}
+.cp-logo img {
+  width: 110px;
+  height: auto;
+  display: block;
+}
+@media (max-width: 640px) {
+  .cp-logo img {
+    width: 90px;
+  }
+}
 .cp-facts {
   display: flex;
   flex-wrap: wrap;

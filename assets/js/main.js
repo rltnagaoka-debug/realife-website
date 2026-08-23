@@ -65,19 +65,25 @@
   const animateCount = (el) => {
     const target = parseFloat(el.dataset.count);
     const decimals = el.dataset.decimals ? parseInt(el.dataset.decimals, 10) : 0;
+    const noGroup = el.hasAttribute("data-no-group");
+    const format = (n) => {
+      if (decimals) return n.toFixed(decimals);
+      const rounded = Math.floor(n);
+      return noGroup ? String(rounded) : rounded.toLocaleString();
+    };
     const duration = 1600;
     const start = performance.now();
     const step = (now) => {
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      const value = target * eased;
-      el.textContent = decimals ? value.toFixed(decimals) : Math.floor(value).toLocaleString();
+      el.textContent = format(target * eased);
       if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = decimals ? target.toFixed(decimals) : target.toLocaleString();
+      else el.textContent = decimals ? target.toFixed(decimals) : noGroup ? String(target) : target.toLocaleString();
     };
     requestAnimationFrame(step);
   };
   if ("IntersectionObserver" in window && counters.length) {
+    counters.forEach((el) => { el.textContent = "0"; });
     const ioCount = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
