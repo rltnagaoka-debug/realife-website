@@ -34,6 +34,13 @@
     mobileNav.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeNav));
   }
 
+  /* Contact form: preselect inquiry type from ?type= query param */
+  const contactTypeParam = new URLSearchParams(location.search).get("type");
+  if (contactTypeParam === "management") {
+    const managementRadio = document.getElementById("type-management");
+    if (managementRadio) managementRadio.checked = true;
+  }
+
   /* Scroll reveal */
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
