@@ -35,10 +35,16 @@
   }
 
   /* Contact form: preselect inquiry type from ?type= query param */
+  const contactTypeMap = {
+    management: "type-management",
+    sale: "type-sale",
+    recruit: "type-recruit",
+    tenant: "type-tenant",
+  };
   const contactTypeParam = new URLSearchParams(location.search).get("type");
-  if (contactTypeParam === "management") {
-    const managementRadio = document.getElementById("type-management");
-    if (managementRadio) managementRadio.checked = true;
+  if (contactTypeParam && contactTypeMap[contactTypeParam]) {
+    const radio = document.getElementById(contactTypeMap[contactTypeParam]);
+    if (radio) radio.checked = true;
   }
 
   /* Scroll reveal */
