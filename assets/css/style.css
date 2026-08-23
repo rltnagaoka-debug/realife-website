@@ -1439,19 +1439,32 @@ button {
   border-bottom: 1px solid var(--line);
   letter-spacing: 0.02em;
 }
-.cp-logo {
+.cp-intro {
   display: flex;
-  justify-content: center;
-  margin: 4px 0 20px;
+  align-items: flex-start;
+  gap: 22px;
 }
-.cp-logo img {
-  width: 110px;
+.cp-intro .cp-text {
+  margin-top: 0;
+  flex: 1;
+}
+.cp-logo-inline {
+  width: 85px;
   height: auto;
+  flex-shrink: 0;
   display: block;
 }
 @media (max-width: 640px) {
-  .cp-logo img {
-    width: 90px;
+  .cp-logo-inline {
+    width: 70px;
+  }
+}
+@media (max-width: 360px) {
+  .cp-intro {
+    flex-direction: column;
+  }
+  .cp-logo-inline {
+    margin-bottom: 12px;
   }
 }
 .cp-facts {
