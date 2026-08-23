@@ -1683,8 +1683,17 @@ button {
 /* ==========================================================================
    Contact
    ========================================================================== */
+/* html already has scroll-padding-top: var(--header-h) sitewide (for other
+   anchor links), which stacks additively with an element's own
+   scroll-margin-top. Values here are set to net out to the intended total
+   offset rather than re-adding the header height on top of it. */
 #contact-form {
-  scroll-margin-top: var(--header-h);
+  scroll-margin-top: 0;
+}
+@media (min-width: 900px) {
+  #contact-form {
+    scroll-margin-top: 20px;
+  }
 }
 .contact-grid {
   display: grid;

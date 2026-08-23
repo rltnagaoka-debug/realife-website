@@ -47,6 +47,67 @@
     if (radio) radio.checked = true;
   }
 
+  /* Contact form: single deliberate jump to the real form, once the page
+     layout has actually settled — the hash was already stripped inline in
+     <head> so the browser's own anchor jump never fires and fights with
+     this one. Web font swaps can keep reflowing the page slightly even
+     after "load" and after document.fonts.ready resolves, so instead of
+     scrolling on a fixed signal, poll layout height until it stops
+     changing across a few animation frames, then scroll exactly once. */
+  if (window.__scrollToContactForm) {
+    // #contact-form carries the sitewide .reveal fade-in (translateY until
+    // it intersects the viewport). That transform shifts the element's own
+    // rendered position after scrollIntoView has already measured/landed on
+    // it, undoing the careful offset above. Skip the entrance animation only
+    // for this direct-link flow so the landing position is final immediately.
+    const contactFormEl = document.getElementById("contact-form");
+    if (contactFormEl) contactFormEl.classList.add("is-visible");
+    const scrollToContactForm = () => {
+      const target = document.getElementById("contact-form");
+      if (!target) return;
+      // html has scroll-behavior: smooth sitewide, and scrollIntoView's
+      // behavior: "auto" means "honor the element's CSS scroll-behavior" —
+      // not "instant". Force instant here so the landing position is exact.
+      const root = document.documentElement;
+      const prevBehavior = root.style.scrollBehavior;
+      root.style.scrollBehavior = "auto";
+      target.scrollIntoView({ behavior: "auto", block: "start" });
+      root.style.scrollBehavior = prevBehavior;
+    };
+    const waitForStableLayout = (callback) => {
+      const maxFrames = 90; // ~1.5s at 60fps safety cap
+      let lastHeight = -1;
+      let stableFrames = 0;
+      let frame = 0;
+      const check = () => {
+        const height = document.documentElement.scrollHeight;
+        if (height === lastHeight) {
+          stableFrames++;
+        } else {
+          stableFrames = 0;
+          lastHeight = height;
+        }
+        frame++;
+        if (stableFrames >= 5 || frame >= maxFrames) {
+          callback();
+        } else {
+          requestAnimationFrame(check);
+        }
+      };
+      requestAnimationFrame(check);
+    };
+    const runScroll = () => {
+      const afterFonts =
+        document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+      afterFonts.then(() => waitForStableLayout(scrollToContactForm));
+    };
+    if (document.readyState === "complete") {
+      runScroll();
+    } else {
+      window.addEventListener("load", runScroll, { once: true });
+    }
+  }
+
   /* Scroll reveal */
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {

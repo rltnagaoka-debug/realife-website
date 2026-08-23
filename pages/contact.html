@@ -1,6 +1,15 @@
 ﻿<!doctype html>
 <html lang="ja">
 <head>
+<script>
+  /* #contact-form の実要素へ移動する前に、ブラウザ標準のアンカー移動が
+     フォント読み込み前の古いレイアウトへ着地しないよう、一旦ハッシュを
+     取り除いておく。実際の移動は main.js がページ読み込み完了後に行う。 */
+  window.__scrollToContactForm = location.hash === "#contact-form";
+  if (window.__scrollToContactForm) {
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>お問い合わせ｜株式会社リアライフ</title>
@@ -13,12 +22,13 @@
 <meta property="og:title" content="お問い合わせ｜株式会社リアライフ" />
 <meta property="og:description" content="株式会社リアライフへのお問い合わせ。賃貸管理・売買・収益物件・採用に関するご相談は、LINE・お電話・フォームからご連絡ください。" />
 <meta property="og:url" content="https://www.rl-group.jp/pages/contact.html" />
-<meta property="og:image" content="../assets/img/ogp-realife.jpg" />
+<meta property="og:image" content="https://www.rl-group.jp/assets/img/ogp-realife.jpg" />
+<meta property="og:image:alt" content="株式会社リアライフ" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="お問い合わせ｜株式会社リアライフ" />
 <meta name="twitter:description" content="株式会社リアライフへのお問い合わせ。賃貸管理・売買・収益物件・採用に関するご相談は、LINE・お電話・フォームからご連絡ください。" />
-<meta name="twitter:image" content="../assets/img/ogp-realife.jpg" />
+<meta name="twitter:image" content="https://www.rl-group.jp/assets/img/ogp-realife.jpg" />
 <link rel="icon" href="../assets/img/logo-icon.png" type="image/png" />
 <meta name="theme-color" content="#eaf6fb" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
