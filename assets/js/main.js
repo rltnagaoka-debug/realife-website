@@ -52,14 +52,15 @@
      or exact address) so the message body still exposes nothing more than
      what's already shown on the listing card. */
   const contactPropertyMap = {
-    "fukuoka-iikura": "福岡市早良区飯倉5丁目 一棟収益マンション",
-    "kurume-nishimachi": "久留米市西町 一棟収益アパート",
+    "fukuoka-iikura": "【お問い合わせ物件】福岡市早良区飯倉5丁目 一棟収益マンション",
+    "kurume-nishimachi": "【お問い合わせ物件】久留米市西町 一棟収益アパート",
+    "kasuga-yayoi": "春日市弥生5丁目の一棟収益アパートについて",
   };
   const contactPropertyParam = new URLSearchParams(location.search).get("property");
   if (contactPropertyParam && contactPropertyMap[contactPropertyParam]) {
     const messageEl = document.getElementById("contact-message");
     if (messageEl && !messageEl.value) {
-      messageEl.value = "【お問い合わせ物件】" + contactPropertyMap[contactPropertyParam] + "\n\n";
+      messageEl.value = contactPropertyMap[contactPropertyParam] + "\n\n";
     }
   }
 
