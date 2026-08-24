@@ -1248,6 +1248,34 @@ button {
   color: var(--navy-900);
   overflow: hidden;
 }
+/* Owner page only: the section above this final CTA lost its own button,
+   so the two now flow as one continuous off-white block — tighten the
+   shared edge instead of leaving the standard double section-pad gap. */
+.owner-vacancy-section {
+  padding-bottom: 56px;
+}
+.owner-vacancy-section .section-head {
+  margin-bottom: 0;
+}
+.owner-section-tight {
+  padding-top: 56px;
+}
+@media (max-width: 900px) {
+  .owner-vacancy-section {
+    padding-bottom: 40px;
+  }
+  .owner-section-tight {
+    padding-top: 40px;
+  }
+}
+@media (max-width: 640px) {
+  .owner-vacancy-section {
+    padding-bottom: 32px;
+  }
+  .owner-section-tight {
+    padding-top: 32px;
+  }
+}
 .owner-question {
   font-family: var(--font-serif);
   font-size: clamp(24px, 4vw, 40px);
