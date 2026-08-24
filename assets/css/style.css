@@ -1094,7 +1094,8 @@ button {
 }
 #property-fukuoka-iikura,
 #property-kurume-nishimachi,
-#property-kasuga-yayoi {
+#property-kasuga-yayoi,
+#property-fukuoka-wajirohigashi {
   /* These cards carry .reveal, whose fade-in transform still shifts them
      upward by ~22px right after a same-document anchor jump lands;
      pad the target so the header never overlaps it once that settles. */
@@ -1179,35 +1180,49 @@ button {
 .property-teaser-grid .property-card,
 #property-fukuoka-iikura,
 #property-kurume-nishimachi,
-#property-kasuga-yayoi {
+#property-kasuga-yayoi,
+#property-fukuoka-wajirohigashi {
   display: flex;
   flex-direction: column;
 }
 .property-teaser-grid .property-body,
 #property-fukuoka-iikura .property-body,
 #property-kurume-nishimachi .property-body,
-#property-kasuga-yayoi .property-body {
+#property-kasuga-yayoi .property-body,
+#property-fukuoka-wajirohigashi .property-body {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
-.property-teaser-grid .property-cta,
-#property-fukuoka-iikura .property-cta,
-#property-kurume-nishimachi .property-cta,
-#property-kasuga-yayoi .property-cta {
+.property-teaser-grid .property-cta {
   margin-top: auto;
   padding-top: 18px;
+}
+/* The properties page cards can carry a different number of trailing
+   disclaimer lines (e.g. a property-specific caveat), so anchoring the
+   button with margin-top:auto — which balances against *all* remaining
+   space, trailing content included — would shift it out of line with
+   the other cards. Leading content (badges/name/yield/price/meta) is
+   already uniform via the min-height name reservation below, so a
+   fixed margin here keeps the button aligned regardless of what
+   follows it. */
+#property-fukuoka-iikura .property-cta,
+#property-kurume-nishimachi .property-cta,
+#property-kasuga-yayoi .property-cta,
+#property-fukuoka-wajirohigashi .property-cta {
+  margin-top: 18px;
 }
 
 /* Reserve two lines for the property name so a one-line name and a
    two-line name still leave yield/price/meta/button starting at the same
-   height across all three cards. Each breakpoint matches the width at
+   height across all cards. Each breakpoint matches the width at
    which that particular grid actually puts cards side by side — below
    it the cards stack, where the reservation would just waste space. */
 @media (min-width: 700px) {
   #property-fukuoka-iikura .property-name,
   #property-kurume-nishimachi .property-name,
-  #property-kasuga-yayoi .property-name {
+  #property-kasuga-yayoi .property-name,
+  #property-fukuoka-wajirohigashi .property-name {
     min-height: 2.6em;
     display: flex;
     align-items: flex-end;
