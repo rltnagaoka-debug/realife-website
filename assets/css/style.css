@@ -1096,7 +1096,8 @@ button {
 #property-kurume-nishimachi,
 #property-kasuga-yayoi,
 #property-fukuoka-wajirohigashi,
-#property-fukuoka-odo {
+#property-fukuoka-odo,
+#property-munakata-ishimaru {
   /* These cards carry .reveal, whose fade-in transform still shifts them
      upward by ~22px right after a same-document anchor jump lands;
      pad the target so the header never overlaps it once that settles. */
@@ -1183,7 +1184,8 @@ button {
 #property-kurume-nishimachi,
 #property-kasuga-yayoi,
 #property-fukuoka-wajirohigashi,
-#property-fukuoka-odo {
+#property-fukuoka-odo,
+#property-munakata-ishimaru {
   display: flex;
   flex-direction: column;
 }
@@ -1192,7 +1194,8 @@ button {
 #property-kurume-nishimachi .property-body,
 #property-kasuga-yayoi .property-body,
 #property-fukuoka-wajirohigashi .property-body,
-#property-fukuoka-odo .property-body {
+#property-fukuoka-odo .property-body,
+#property-munakata-ishimaru .property-body {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -1213,7 +1216,8 @@ button {
 #property-kurume-nishimachi .property-cta,
 #property-kasuga-yayoi .property-cta,
 #property-fukuoka-wajirohigashi .property-cta,
-#property-fukuoka-odo .property-cta {
+#property-fukuoka-odo .property-cta,
+#property-munakata-ishimaru .property-cta {
   margin-top: 18px;
 }
 
@@ -1227,7 +1231,8 @@ button {
   #property-kurume-nishimachi .property-name,
   #property-kasuga-yayoi .property-name,
   #property-fukuoka-wajirohigashi .property-name,
-  #property-fukuoka-odo .property-name {
+  #property-fukuoka-odo .property-name,
+  #property-munakata-ishimaru .property-name {
     min-height: 2.6em;
     display: flex;
     align-items: flex-end;

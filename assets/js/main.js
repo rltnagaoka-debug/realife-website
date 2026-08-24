@@ -57,6 +57,7 @@
     "kasuga-yayoi": "春日市弥生5丁目の一棟収益アパートについて",
     "fukuoka-wajirohigashi": "福岡市東区和白東5丁目の一棟収益アパートについて",
     "fukuoka-odo": "福岡市西区小戸4丁目の一棟収益アパートについて",
+    "munakata-ishimaru": "宗像市石丸2丁目の一棟収益アパートについて",
   };
   const contactPropertyParam = new URLSearchParams(location.search).get("property");
   if (contactPropertyParam && contactPropertyMap[contactPropertyParam]) {
