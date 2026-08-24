@@ -1124,10 +1124,17 @@ button {
      pad the target so the header never overlaps it once that settles. */
   scroll-margin-top: 24px;
 }
+/* Real-listing cards only (badge row sits in the card body, never over
+   the photo, so the building itself is never obscured). Not used by the
+   sample cards further down the properties page. */
+.property-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
 .property-new {
-  position: absolute;
-  top: 14px;
-  right: 14px;
+  display: inline-block;
   background: var(--gold-500);
   color: var(--navy-900);
   font-family: var(--font-serif);
@@ -1144,7 +1151,6 @@ button {
   font-weight: 700;
   letter-spacing: 0.04em;
   padding: 5px 12px;
-  margin-bottom: 12px;
 }
 .property-name {
   font-family: var(--font-serif);
@@ -1152,21 +1158,24 @@ button {
   font-weight: 700;
   line-height: 1.3;
   color: var(--navy-900);
-  margin: 0 0 6px;
+  margin: 0 0 8px;
+}
+.property-yield-inline {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--gold-700);
+  margin: 0 0 10px;
+}
+.property-yield-inline strong {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 700;
 }
 .property-cta {
   margin-top: 18px;
-}
-.property-actions {
-  margin-top: 18px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.property-actions .btn {
-  flex: 1 1 auto;
-  padding-left: 14px;
-  padding-right: 14px;
 }
 .property-disclaimer {
   margin-top: 14px;
@@ -1180,45 +1189,39 @@ button {
   line-height: 1.6;
   color: var(--ink-500);
 }
-
-/* Top-page teaser grid: only real, currently-live listings — keep both
-   cards' image height, card height, and button row aligned regardless of
-   small differences in meta text length. */
-.property-teaser-grid .property-card {
-  display: flex;
-  flex-direction: column;
-}
-.property-teaser-grid .property-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.property-teaser-grid .property-actions {
-  margin-top: auto;
-  padding-top: 18px;
+.property-teaser-more {
+  margin-top: 32px;
+  text-align: center;
 }
 
-/* Real-listing cards on the properties page: same top/bottom alignment
-   treatment as the teaser-grid pair above, scoped to just these two
-   cards so the sample listings below are untouched. */
+/* Top-page teaser grid and the two real-listing cards on the properties
+   page share the same alignment treatment: flex the card body so the
+   button/note/disclaimer anchor to the same baseline regardless of small
+   differences in meta text length, and keep both cards' overall height
+   in sync. Scoped by ID on the properties page so the sample listings
+   further down are untouched. */
+.property-teaser-grid .property-card,
 #property-fukuoka-iikura,
 #property-kurume-nishimachi {
   display: flex;
   flex-direction: column;
 }
+.property-teaser-grid .property-body,
 #property-fukuoka-iikura .property-body,
 #property-kurume-nishimachi .property-body {
   flex: 1;
   display: flex;
   flex-direction: column;
 }
+.property-teaser-grid .property-cta,
 #property-fukuoka-iikura .property-cta,
 #property-kurume-nishimachi .property-cta {
   margin-top: auto;
+  padding-top: 18px;
 }
 
 /* Reserve two lines for the property name so a one-line name and a
-   two-line name still leave price/meta/button starting at the same
+   two-line name still leave yield/price/meta/button starting at the same
    height across the two cards — desktop only; mobile stacks the cards
    so the fixed reservation would just leave empty space. */
 @media (min-width: 600px) {
