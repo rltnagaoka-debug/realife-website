@@ -1943,30 +1943,6 @@ button {
   line-height: 2.1;
   color: var(--ink-500);
 }
-.footer-sns {
-  display: flex;
-  gap: 14px;
-  margin-top: 24px;
-}
-.footer-sns a {
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--navy-700);
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  transition: border-color 0.4s var(--ease), color 0.4s var(--ease);
-}
-.footer-sns a:hover {
-  border-color: var(--gold-500);
-  color: var(--gold-700);
-}
-.footer-sns svg {
-  width: 16px;
-  height: 16px;
-}
 .footer-cols {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
