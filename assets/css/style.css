@@ -1450,6 +1450,12 @@ button {
   margin-top: 36px;
   text-align: center;
 }
+.news-empty {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--ink-500);
+  font-size: 14px;
+}
 
 /* ==========================================================================
    Company summary
