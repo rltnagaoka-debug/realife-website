@@ -127,19 +127,17 @@
         </div>
       </div>
 
-      <!--
-        フォーム送信の実装について：
-        現在このフォームは送信先が未設定のプレースホルダーです。
-        実運用時は <form> の action / method に送信先（自社サーバーAPI、
-        フォーム送信サービス、GAS等）を設定するか、
-        JavaScriptでfetch送信する処理に差し替えてください。
-      -->
       <div class="about" style="grid-template-columns:1fr;max-width:760px;margin:0 auto;">
         <div class="reveal" id="contact-form">
           <h2 class="section-title" style="text-align:left;margin-bottom:8px;">お問い合わせフォーム</h2>
           <p class="section-lead" style="margin-top:0;margin-bottom:32px;">必須項目をご入力の上、送信してください。担当者より折り返しご連絡いたします。</p>
 
           <form class="contact-form" action="#" method="post">
+            <div style="display:none" aria-hidden="true">
+              <label for="contact-botcheck">この項目は入力しないでください</label>
+              <input type="checkbox" id="contact-botcheck" name="botcheck" tabindex="-1" autocomplete="off" />
+            </div>
+
             <div class="form-split">
               <div class="form-row">
                 <label for="contact-last-name">姓 <span class="form-required">必須</span></label>
@@ -189,6 +187,11 @@
             </fieldset>
 
             <div class="form-row">
+              <label for="contact-reason">リアライフへ相談しようと思った一番の理由 <span class="form-required">必須</span></label>
+              <input type="text" id="contact-reason" name="reason" required placeholder="例：空室が続いていて困っている、そろそろ売却を検討したい　など" />
+            </div>
+
+            <div class="form-row">
               <label for="contact-message">お問い合わせ内容 <span class="form-required">必須</span></label>
               <textarea id="contact-message" name="message" required></textarea>
             </div>
@@ -204,16 +207,18 @@
               </label>
             </div>
 
-            <!--
-              送信先未設定のため action="#" のままにしています。
-              正式公開時は、この <form> の action / method に送信先
-              （自社サーバーAPI、フォーム送信サービス、GAS等）を設定するか、
-              JavaScriptでfetch送信する処理に差し替えてください。
-            -->
+            <div id="contact-form-error" class="form-alert" role="alert" hidden>
+              送信できませんでした。時間をおいて再度お試しいただくか、お電話またはLINEよりお問い合わせください。
+            </div>
+
             <div class="form-submit">
               <button type="submit" class="btn btn-gold">この内容で送信する</button>
             </div>
           </form>
+
+          <div id="contact-form-success" class="form-result" hidden>
+            <p>お問い合わせありがとうございます。内容を確認のうえ、担当者よりご連絡いたします。</p>
+          </div>
         </div>
       </div>
     </div>

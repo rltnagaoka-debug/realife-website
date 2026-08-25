@@ -2502,6 +2502,38 @@ button {
 .form-submit {
   text-align: center;
 }
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.form-alert {
+  margin-bottom: 28px;
+  padding: 14px 18px;
+  background: #fdf1f0;
+  border: 1px solid #e7b4ae;
+  color: #8a2e24;
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+.form-result {
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: 60px 44px;
+  text-align: center;
+}
+.form-result p {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--navy-900);
+  font-weight: 600;
+}
+@media (max-width: 640px) {
+  .form-result {
+    padding: 40px 24px;
+  }
+}
 
 /* ==========================================================================
    Sub-page: FAQ / accordion

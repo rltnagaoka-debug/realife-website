@@ -67,6 +67,110 @@
     }
   }
 
+  /* Contact form: submit via Web3Forms. GitHub Pages serves static files
+     only, so a third-party relay handles the actual email delivery — the
+     destination inbox is configured on the Web3Forms account itself, never
+     written here. Only the account's own access key lives in this file. */
+  const WEB3FORMS_ACCESS_KEY = "0b78429e-818a-4edd-8200-29b1d0100537";
+  const contactForm = document.querySelector(".contact-form");
+  if (contactForm) {
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const errorBox = document.getElementById("contact-form-error");
+    const successBox = document.getElementById("contact-form-success");
+
+    /* Clean display names for the "対象物件" line in the notification email —
+       kept separate from contactPropertyMap above, whose values are the
+       full sentences pre-filled into the editable message textarea. */
+    const contactPropertyNames = {
+      "fukuoka-iikura": "福岡市早良区飯倉5丁目 一棟収益マンション",
+      "kurume-nishimachi": "久留米市西町 一棟収益アパート",
+      "kasuga-yayoi": "春日市弥生5丁目 一棟収益アパート",
+      "fukuoka-wajirohigashi": "福岡市東区和白東5丁目 一棟収益アパート",
+      "fukuoka-odo": "福岡市西区小戸4丁目 一棟収益アパート",
+      "munakata-ishimaru": "宗像市石丸2丁目 一棟収益アパート",
+    };
+    const contactPropertyName =
+      (contactPropertyParam && contactPropertyNames[contactPropertyParam]) || "";
+
+    let isSubmitting = false;
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (isSubmitting) return;
+
+      // Honeypot: real visitors never see or fill this field, so a checked
+      // box means an automated submission — drop it without any feedback.
+      const honeypot = contactForm.elements["botcheck"];
+      if (honeypot && honeypot.checked) return;
+
+      const val = (id) => (document.getElementById(id) || {}).value?.trim() || "";
+      const typeInput = contactForm.querySelector('input[name="type"]:checked');
+      const sentAt = new Date().toLocaleString("ja-JP", {
+        timeZone: "Asia/Tokyo",
+        dateStyle: "medium",
+        timeStyle: "short",
+      });
+
+      const lastName = val("contact-last-name");
+      const firstName = val("contact-first-name");
+      const email = val("contact-email");
+
+      const lines = [
+        `姓：${lastName}（${val("contact-last-name-kana")}）`,
+        `名：${firstName}（${val("contact-first-name-kana")}）`,
+        `メールアドレス：${email}`,
+        `電話番号：${val("contact-tel")}`,
+        `住所：${val("contact-address") || "（未入力）"}`,
+        `お問い合わせ種別：${typeInput ? typeInput.value : "（未選択）"}`,
+      ];
+      if (contactPropertyName) lines.push(`対象物件：${contactPropertyName}`);
+      lines.push(`相談しようと思った一番の理由：${val("contact-reason")}`);
+      lines.push("", "お問い合わせ内容：", val("contact-message"), "", `送信日時：${sentAt}`);
+
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `【HPお問い合わせ】${typeInput ? typeInput.value : "お問い合わせ"}`,
+        from_name: `${lastName} ${firstName}`,
+        email,
+        replyto: email,
+        message: lines.join("\n"),
+      };
+
+      isSubmitting = true;
+      if (errorBox) errorBox.hidden = true;
+      const originalLabel = submitBtn ? submitBtn.textContent : "";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "送信中…";
+      }
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => null);
+        if (!res.ok || !data || !data.success) throw new Error("submit failed");
+
+        contactForm.hidden = true;
+        if (successBox) {
+          successBox.hidden = false;
+          successBox.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      } catch (err) {
+        isSubmitting = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+        if (errorBox) {
+          errorBox.hidden = false;
+          errorBox.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+    });
+  }
+
   /* Contact form: single deliberate jump to the real form, once the page
      layout has actually settled — the hash was already stripped inline in
      <head> so the browser's own anchor jump never fires and fights with
