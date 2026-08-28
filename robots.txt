@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.rl-group.jp/sitemap.xml
+Sitemap: https://realife-group.jp/sitemap.xml
