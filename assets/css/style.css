@@ -2209,6 +2209,7 @@ button {
    ========================================================================== */
 .prose {
   max-width: 760px;
+  margin: 0 auto;
 }
 .prose h2 {
   font-family: var(--font-serif);
