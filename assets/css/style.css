@@ -1450,6 +1450,33 @@ button {
   margin-top: 36px;
   text-align: center;
 }
+.event-perk-box {
+  background: var(--gold-100);
+  border: 2px solid var(--gold-500);
+  padding: 32px 24px;
+  text-align: center;
+  margin: 24px 0 40px;
+}
+.event-perk-box .event-perk-lead {
+  font-size: 14.5px;
+  color: var(--navy-900);
+  margin-bottom: 10px;
+}
+.event-perk-box .event-perk-amount {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--gold-700);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.event-perk-box .event-perk-amount strong {
+  font-size: 30px;
+}
+.event-perk-box .event-perk-note {
+  font-size: 12.5px;
+  color: var(--ink-500);
+  margin-bottom: 0;
+}
 .news-empty {
   padding: 48px 0;
   text-align: center;

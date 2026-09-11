@@ -69,6 +69,19 @@
     }
   }
 
+  /* Contact form: prefill a ready-made message for non-property inquiries
+     (e.g. an event/news CTA) via ?topic=, same guarded pattern as ?property=. */
+  const contactTopicMap = {
+    "ooyasan-festa": "大家さんフェスタの事前面談予約を希望します。",
+  };
+  const contactTopicParam = new URLSearchParams(location.search).get("topic");
+  if (contactTopicParam && contactTopicMap[contactTopicParam]) {
+    const messageEl = document.getElementById("contact-message");
+    if (messageEl && !messageEl.value) {
+      messageEl.value = contactTopicMap[contactTopicParam];
+    }
+  }
+
   /* Contact form: submit via Web3Forms. GitHub Pages serves static files
      only, so a third-party relay handles the actual email delivery — the
      destination inbox is configured on the Web3Forms account itself, never
