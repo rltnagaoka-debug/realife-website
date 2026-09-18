@@ -60,6 +60,7 @@
     "munakata-ishimaru": "宗像市石丸2丁目の一棟収益アパートについて",
     "kitakyushu-kasuga": "北九州市門司区春日町の一棟収益アパートについて",
     "kitakyushu-kusuhashi": "北九州市八幡西区楠橋下方2丁目の一棟収益アパートについて",
+    "osaka-owada": "大阪市西淀川区大和田3丁目の一棟収益アパートについて",
   };
   const contactPropertyParam = new URLSearchParams(location.search).get("property");
   if (contactPropertyParam && contactPropertyMap[contactPropertyParam]) {
@@ -105,6 +106,7 @@
       "munakata-ishimaru": "宗像市石丸2丁目 一棟収益アパート",
       "kitakyushu-kasuga": "北九州市門司区春日町 一棟収益アパート",
       "kitakyushu-kusuhashi": "北九州市八幡西区楠橋下方2丁目 一棟収益アパート",
+      "osaka-owada": "大阪市西淀川区大和田3丁目 一棟収益アパート",
     };
     const contactPropertyName =
       (contactPropertyParam && contactPropertyNames[contactPropertyParam]) || "";
