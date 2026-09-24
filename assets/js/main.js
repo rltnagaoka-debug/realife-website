@@ -62,6 +62,7 @@
     "kitakyushu-kusuhashi": "北九州市八幡西区楠橋下方2丁目の一棟収益アパートについて",
     "osaka-owada": "大阪市西淀川区大和田3丁目の一棟収益アパートについて",
     "osaka-yakino": "大阪市鶴見区焼野2丁目の一棟収益アパートについて",
+    "hokkaido-sapporo": "札幌市北区北二十六条西5丁目の一棟収益マンションについて",
   };
   const contactPropertyParam = new URLSearchParams(location.search).get("property");
   if (contactPropertyParam && contactPropertyMap[contactPropertyParam]) {
@@ -109,6 +110,7 @@
       "kitakyushu-kusuhashi": "北九州市八幡西区楠橋下方2丁目 一棟収益アパート",
       "osaka-owada": "大阪市西淀川区大和田3丁目 一棟収益アパート",
       "osaka-yakino": "大阪市鶴見区焼野2丁目 一棟収益アパート",
+      "hokkaido-sapporo": "札幌市北区北二十六条西5丁目 一棟収益マンション",
     };
     const contactPropertyName =
       (contactPropertyParam && contactPropertyNames[contactPropertyParam]) || "";
