@@ -332,47 +332,51 @@
     });
   });
 
-  /* Property listing (bukken page): newest-first order and an automatic
-     "新着物件" badge, both driven by each card's data-published="YYYY-MM-DD"
-     (the publish date, judged in Japan time). A card is "new" while at most
-     30 days have passed since its publish date; from the 31st day on only the
-     badge is dropped and the card stays. Ties keep the existing DOM order, and
-     since the filter below only toggles visibility, filtered views stay sorted. */
-  const bukkenGrid = document.querySelector(".bukken-grid");
-  if (bukkenGrid) {
-    const NEW_DAYS = 30;
-    const jstToday = new Intl.DateTimeFormat("en-CA", {
+  /* Shared by the property listing and the top-page teaser: the "新着物件"
+     rule. Dates are judged in Japan time; a property is "new" while at most
+     30 days have passed since its publish date (data-published="YYYY-MM-DD"),
+     and from the 31st day on only the badge is dropped. */
+  const NEW_DAYS = 30;
+  const dayNumber = (ymd) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
+    return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000 : NaN;
+  };
+  const todayNum = dayNumber(
+    new Intl.DateTimeFormat("en-CA", {
       timeZone: "Asia/Tokyo",
       year: "numeric",
       month: "2-digit",
       day: "2-digit",
-    }).format(new Date());
-    const dayNumber = (ymd) => {
-      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
-      return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000 : NaN;
-    };
-    const todayNum = dayNumber(jstToday);
+    }).format(new Date())
+  );
+  const syncNewBadge = (card, published) => {
+    const badges = card.querySelector(".property-badges");
+    if (!badges) return;
+    const existing = badges.querySelector(".property-new");
+    const isNew = !Number.isNaN(published) && todayNum - published <= NEW_DAYS;
+    if (isNew && !existing) {
+      const badge = document.createElement("span");
+      badge.className = "property-new";
+      badge.textContent = "新着物件";
+      badges.insertBefore(badge, badges.firstChild);
+    } else if (!isNew && existing) {
+      existing.remove();
+    }
+  };
 
+  /* Property listing (bukken page): newest-first order and the automatic
+     "新着物件" badge, both driven by each card's data-published. Ties keep the
+     existing DOM order, and since the filter below only toggles visibility,
+     filtered views stay sorted. */
+  const bukkenGrid = document.querySelector(".bukken-grid");
+  if (bukkenGrid) {
     const items = [...bukkenGrid.querySelectorAll(":scope > .property-card")].map((el, index) => ({
       el,
       index,
       published: dayNumber(el.dataset.published),
     }));
 
-    items.forEach(({ el, published }) => {
-      const badges = el.querySelector(".property-badges");
-      if (!badges) return;
-      const existing = badges.querySelector(".property-new");
-      const isNew = !Number.isNaN(published) && todayNum - published <= NEW_DAYS;
-      if (isNew && !existing) {
-        const badge = document.createElement("span");
-        badge.className = "property-new";
-        badge.textContent = "新着物件";
-        badges.insertBefore(badge, badges.firstChild);
-      } else if (!isNew && existing) {
-        existing.remove();
-      }
-    });
+    items.forEach(({ el, published }) => syncNewBadge(el, published));
 
     items
       .slice()
@@ -382,6 +386,75 @@
         return pb - pa || a.index - b.index;
       })
       .forEach(({ el }) => bukkenGrid.appendChild(el));
+  }
+
+  /* Top-page teaser: show up to 3 random properties out of those currently
+     listed on pages/bukken.html (the single source of truth, so adding or
+     removing a listing there is reflected here with no edit to this page).
+     Cards are cloned from the list page, so price / yield / location /
+     photo / contact link always match it. Sold, hidden or ended listings
+     (hidden attribute, or data-status of sold / closed / ended / private)
+     are skipped. The grid stays invisible (space reserved) until the cards
+     are in place, so nothing swaps or jumps after the page is shown. */
+  const teaserGrid = document.querySelector(".property-teaser-grid");
+  if (teaserGrid && "fetch" in window && "DOMParser" in window) {
+    const TEASER_COUNT = 3;
+    const INACTIVE = ["sold", "closed", "ended", "private", "hidden"];
+    teaserGrid.classList.add("is-loading");
+
+    const listUrl = new URL("pages/bukken.html", window.location.href);
+    const docBase = new URL(".", window.location.href).href;
+    const rebase = (value) => {
+      if (!value || /^(#|mailto:|tel:|javascript:)/i.test(value)) return value;
+      const abs = new URL(value, listUrl).href;
+      return abs.startsWith(docBase) ? abs.slice(docBase.length) : abs;
+    };
+    const shuffle = (arr) => {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    };
+
+    fetch(listUrl.href, { credentials: "same-origin" })
+      .then((res) => {
+        if (!res.ok) throw new Error("list unavailable");
+        return res.text();
+      })
+      .then((html) => {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const listed = [...doc.querySelectorAll(".bukken-grid > .property-card")].filter((el) => {
+          const status = (el.dataset.status || "").toLowerCase();
+          return !el.hidden && !INACTIVE.includes(status) && el.querySelector(".property-cta");
+        });
+        if (!listed.length) throw new Error("no listings");
+
+        const fragment = document.createDocumentFragment();
+        shuffle(listed)
+          .slice(0, TEASER_COUNT)
+          .forEach((src) => {
+            const card = src.cloneNode(true);
+            const walker = document.createTreeWalker(card, NodeFilter.SHOW_COMMENT);
+            const comments = [];
+            while (walker.nextNode()) comments.push(walker.currentNode);
+            comments.forEach((c) => c.remove());
+            card.classList.remove("reveal", "is-visible");
+            ["id", "data-area", "data-published", "data-status"].forEach((a) => card.removeAttribute(a));
+            card.querySelectorAll("[src]").forEach((el) => el.setAttribute("src", rebase(el.getAttribute("src"))));
+            card.querySelectorAll("[href]").forEach((el) => el.setAttribute("href", rebase(el.getAttribute("href"))));
+            card.querySelectorAll("img").forEach((img) => img.setAttribute("loading", "lazy"));
+            syncNewBadge(card, dayNumber(src.dataset.published));
+            fragment.appendChild(card);
+          });
+        teaserGrid.appendChild(fragment);
+        teaserGrid.classList.remove("is-loading");
+        teaserGrid.classList.add("is-ready");
+      })
+      .catch(() => {
+        /* Leave the grid empty; the "掲載物件一覧を見る" button below still works. */
+        teaserGrid.classList.remove("is-loading");
+      });
   }
 
   /* Property listing filter (bukken page) */
