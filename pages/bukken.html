@@ -109,13 +109,43 @@
         <button data-area="札幌市">札幌市</button>
         <button data-area="佐賀市">佐賀市</button>
       </div>
-      <p class="bukken-count reveal"><strong>12</strong> 件の物件を表示中</p>
+      <p class="bukken-count reveal"><strong>13</strong> 件の物件を表示中</p>
 
       <div class="bukken-grid">
         <!-- ▼▼▼ 実在物件（正式公開後もそのまま維持） ▼▼▼
              物件名・番地はサイト上に一切表示しないこと。 -->
         <!-- 新規物件の追加方法：<article> に data-published="YYYY-MM-DD"（公開日・日本時間）を付けて追加。
              新しい順の並び替えと「新着物件」表示（公開から30日以内のみ）は main.js が自動で行います。 -->
+        <article class="property-card reveal" data-area="東区" id="property-fukuoka-hakozaki" data-published="2026-10-14">
+          <div class="property-photo">
+            <img
+              src="../assets/img/property-fukuoka-hakozakifuto.webp"
+              alt="福岡市東区箱崎ふ頭3丁目 一棟収益マンション"
+              width="1160"
+              height="870"
+              loading="lazy"
+            />
+          </div>
+          <div class="property-body">
+            <div class="property-badges">
+              <span class="property-new">新着物件</span>
+              <span class="property-status">23／24戸稼働中</span>
+            </div>
+            <p class="property-name">福岡市東区箱崎ふ頭3丁目 一棟収益マンション</p>
+            <p class="property-yield-inline">満室想定利回り <strong>7.19%</strong></p>
+            <div class="property-price">1億5,400<small>万円（税込）</small></div>
+            <div class="property-meta">
+              <span>所在地：<strong>福岡県福岡市東区箱崎ふ頭3丁目</strong></span>
+              <span>構造：<strong>鉄筋コンクリート造 陸屋根6階建</strong></span>
+              <span>築年月：<strong>1988年10月</strong></span>
+              <span>総戸数：<strong>24戸</strong></span>
+            </div>
+            <a href="contact.html?type=sale&amp;property=fukuoka-hakozaki#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
+            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
+          </div>
+        </article>
+
         <article class="property-card reveal" data-area="佐賀市" id="property-saga-kanno" data-published="2026-10-14">
           <div class="property-photo">
             <img
@@ -599,6 +629,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
-<script src="../assets/js/main.js?v=3"></script>
+<script src="../assets/js/main.js?v=5"></script>
 </body>
 </html>

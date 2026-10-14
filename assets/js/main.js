@@ -64,6 +64,7 @@
     "osaka-yakino": "大阪市鶴見区焼野2丁目の一棟収益アパートについて",
     "hokkaido-sapporo": "札幌市北区北二十六条西5丁目の一棟収益マンションについて",
     "saga-kanno": "佐賀市神野西3丁目の一棟収益アパート3棟について",
+    "fukuoka-hakozaki": "福岡市東区箱崎ふ頭3丁目の一棟収益マンションについて",
   };
   const contactPropertyParam = new URLSearchParams(location.search).get("property");
   if (contactPropertyParam && contactPropertyMap[contactPropertyParam]) {
@@ -113,6 +114,7 @@
       "osaka-yakino": "大阪市鶴見区焼野2丁目 一棟収益アパート",
       "hokkaido-sapporo": "札幌市北区北二十六条西5丁目 一棟収益マンション",
       "saga-kanno": "佐賀市神野西3丁目 一棟収益アパート3棟",
+      "fukuoka-hakozaki": "福岡市東区箱崎ふ頭3丁目 一棟収益マンション",
     };
     const contactPropertyName =
       (contactPropertyParam && contactPropertyNames[contactPropertyParam]) || "";
@@ -474,6 +476,8 @@
       if (countEl) countEl.textContent = visible;
       if (emptyEl) emptyEl.classList.toggle("is-visible", visible === 0);
     };
+    /* The initial count always reflects the cards actually on the page. */
+    if (countEl) countEl.textContent = cards.length;
     buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         buttons.forEach((b) => b.classList.remove("is-active"));
