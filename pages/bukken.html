@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/css/style.css?v=3" />
+<link rel="stylesheet" href="../assets/css/style.css?v=4" />
 </head>
 <body>
 
@@ -114,13 +114,45 @@
       <div class="bukken-grid">
         <!-- ▼▼▼ 実在物件（正式公開後もそのまま維持） ▼▼▼
              物件名・番地はサイト上に一切表示しないこと。 -->
-        <article class="property-card reveal" data-area="早良区" id="property-fukuoka-iikura">
+        <!-- 新規物件の追加方法：<article> に data-published="YYYY-MM-DD"（公開日・日本時間）を付けて追加。
+             新しい順の並び替えと「新着物件」表示（公開から30日以内のみ）は main.js が自動で行います。 -->
+        <article class="property-card reveal" data-area="佐賀市" id="property-saga-kanno" data-published="2026-10-14">
           <div class="property-photo">
             <img
-              src="../assets/img/property-fukuoka-iikura.webp"
-              alt="福岡市早良区飯倉5丁目の一棟収益マンション外観"
-              width="937"
-              height="792"
+              src="../assets/img/property-saga-kanno.webp"
+              alt="佐賀県佐賀市神野西3丁目の一棟収益アパート3棟外観"
+              width="392"
+              height="294"
+              loading="lazy"
+            />
+          </div>
+          <div class="property-body">
+            <div class="property-badges">
+              <span class="property-new">新着物件</span>
+              <span class="property-status">15／18戸稼働中</span>
+            </div>
+            <p class="property-name">佐賀市神野西3丁目 一棟収益アパート3棟</p>
+            <p class="property-yield-inline">満室想定利回り <strong>9.95%</strong></p>
+            <div class="property-price">7,800<small>万円（税込）</small></div>
+            <div class="property-meta">
+              <span>所在地：<strong>佐賀県佐賀市神野西3丁目</strong></span>
+              <span>構造：<strong>木造スレート葺2階建</strong></span>
+              <span>築年月：<strong>1994年1月</strong></span>
+              <span>総戸数：<strong>18戸</strong></span>
+            </div>
+            <a href="contact.html?type=sale&amp;property=saga-kanno#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
+            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
+          </div>
+        </article>
+
+        <article class="property-card reveal" data-area="大阪市" id="property-osaka-yakino" data-published="2026-09-24">
+          <div class="property-photo">
+            <img
+              src="../assets/img/property-osaka-yakino.webp"
+              alt="大阪府大阪市鶴見区焼野2丁目の一棟収益アパート外観"
+              width="637"
+              height="478"
               loading="lazy"
             />
           </div>
@@ -129,22 +161,140 @@
               <span class="property-new">新着物件</span>
               <span class="property-status">満室稼働中</span>
             </div>
-            <p class="property-name">福岡市早良区飯倉5丁目 一棟収益マンション</p>
-            <p class="property-yield-inline">満室想定利回り <strong>5.41%</strong></p>
-            <div class="property-price">8億8,000<small>万円（税込）</small></div>
+            <p class="property-name">大阪市鶴見区焼野2丁目 一棟収益アパート</p>
+            <p class="property-yield-inline">満室想定利回り <strong>7.01%</strong></p>
+            <div class="property-price">1億5,900<small>万円</small></div>
             <div class="property-meta">
-              <span>所在地：<strong>福岡市早良区飯倉5丁目</strong></span>
-              <span>構造：<strong>RC造 9階建</strong></span>
-              <span>築年月：<strong>2003年6月</strong></span>
-              <span>総戸数：<strong>57戸</strong></span>
+              <span>所在地：<strong>大阪府大阪市鶴見区焼野2丁目</strong></span>
+              <span>構造：<strong>木造 ガルバリウム鋼板葺3階建</strong></span>
+              <span>築年月：<strong>2018年6月</strong></span>
+              <span>総戸数：<strong>12戸</strong></span>
             </div>
-            <a href="contact.html?type=sale&amp;property=fukuoka-iikura#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <a href="contact.html?type=sale&amp;property=osaka-yakino#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
             <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
             <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
           </div>
         </article>
 
-        <article class="property-card reveal" data-area="西区" id="property-fukuoka-odo">
+        <article class="property-card reveal" data-area="札幌市" id="property-hokkaido-sapporo" data-published="2026-09-24">
+          <div class="property-photo">
+            <img
+              src="../assets/img/property-hokkaido-sapporo.webp"
+              alt="北海道札幌市北区北二十六条西5丁目の一棟収益マンション外観"
+              width="1200"
+              height="900"
+              loading="lazy"
+            />
+          </div>
+          <div class="property-body">
+            <div class="property-badges">
+              <span class="property-new">新着物件</span>
+              <span class="property-status">満室稼働中</span>
+            </div>
+            <p class="property-name">札幌市北区北二十六条西5丁目 一棟収益マンション</p>
+            <p class="property-yield-inline">満室想定利回り <strong>7.06%</strong></p>
+            <div class="property-price">1億8,400<small>万円（税込）</small></div>
+            <div class="property-meta">
+              <span>所在地：<strong>北海道札幌市北区北二十六条西5丁目</strong></span>
+              <span>構造：<strong>鉄筋コンクリート造 陸屋根7階建</strong></span>
+              <span>築年月：<strong>2004年1月</strong></span>
+              <span>総戸数：<strong>20戸</strong></span>
+            </div>
+            <a href="contact.html?type=sale&amp;property=hokkaido-sapporo#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
+            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
+          </div>
+        </article>
+
+        <article class="property-card reveal" data-area="大阪市" id="property-osaka-owada" data-published="2026-09-18">
+          <div class="property-photo">
+            <img
+              src="../assets/img/property-osaka-owada.webp"
+              alt="大阪府大阪市西淀川区大和田3丁目の一棟収益アパート外観"
+              width="1200"
+              height="900"
+              loading="lazy"
+            />
+          </div>
+          <div class="property-body">
+            <div class="property-badges">
+              <span class="property-new">新着物件</span>
+              <span class="property-status">満室稼働中</span>
+            </div>
+            <p class="property-name">大阪市西淀川区大和田3丁目 一棟収益アパート</p>
+            <p class="property-yield-inline">満室想定利回り <strong>6.11%</strong></p>
+            <div class="property-price">2億2,500<small>万円</small></div>
+            <div class="property-meta">
+              <span>所在地：<strong>大阪府大阪市西淀川区大和田3丁目</strong></span>
+              <span>構造：<strong>木造 ガルバリウム鋼板葺 3階建</strong></span>
+              <span>築年月：<strong>2023年3月</strong></span>
+              <span>総戸数：<strong>15戸</strong></span>
+            </div>
+            <a href="contact.html?type=sale&amp;property=osaka-owada#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
+            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
+          </div>
+        </article>
+
+        <article class="property-card reveal" data-area="北九州市" id="property-kitakyushu-kasuga" data-published="2026-09-11">
+          <div class="property-photo">
+            <img
+              src="../assets/img/property-kitakyushu-kasuga.webp"
+              alt="福岡県北九州市門司区春日町の一棟収益アパート外観"
+              width="1200"
+              height="900"
+              loading="lazy"
+            />
+          </div>
+          <div class="property-body">
+            <div class="property-badges">
+              <span class="property-status">満室稼働中</span>
+            </div>
+            <p class="property-name">北九州市門司区春日町 一棟収益アパート</p>
+            <p class="property-yield-inline">満室想定利回り <strong>8.00%</strong></p>
+            <div class="property-price">9,800<small>万円（税込）</small></div>
+            <div class="property-meta">
+              <span>所在地：<strong>福岡県北九州市門司区春日町</strong></span>
+              <span>構造：<strong>木造</strong></span>
+              <span>築年月：<strong>2015年6月</strong></span>
+              <span>総戸数：<strong>10戸</strong></span>
+            </div>
+            <a href="contact.html?type=sale&amp;property=kitakyushu-kasuga#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
+            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
+          </div>
+        </article>
+
+        <article class="property-card reveal" data-area="北九州市" id="property-kitakyushu-kusuhashi" data-published="2026-09-11">
+          <div class="property-photo">
+            <img
+              src="../assets/img/property-kitakyushu-kusuhashi.webp"
+              alt="福岡県北九州市八幡西区楠橋下方2丁目の一棟収益アパート外観"
+              width="1150"
+              height="862"
+              loading="lazy"
+            />
+          </div>
+          <div class="property-body">
+            <div class="property-badges">
+              <span class="property-status">満室稼働中</span>
+            </div>
+            <p class="property-name">北九州市八幡西区楠橋下方2丁目 一棟収益アパート</p>
+            <p class="property-yield-inline">満室想定利回り <strong>7.97%</strong></p>
+            <div class="property-price">8,420<small>万円（税込）</small></div>
+            <div class="property-meta">
+              <span>所在地：<strong>福岡県北九州市八幡西区楠橋下方2丁目</strong></span>
+              <span>構造：<strong>木造</strong></span>
+              <span>築年月：<strong>2014年1月</strong></span>
+              <span>総戸数：<strong>10戸</strong></span>
+            </div>
+            <a href="contact.html?type=sale&amp;property=kitakyushu-kusuhashi#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
+            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
+          </div>
+        </article>
+
+        <article class="property-card reveal" data-area="西区" id="property-fukuoka-odo" data-published="2026-08-24">
           <!-- 問い合わせ対応用の参考データ（非公開・HP上には表示しない）
                交通：福岡市地下鉄空港線・JR筑肥線「姪浜駅」徒歩14分
                年間賃料：427万8,000円
@@ -164,7 +314,6 @@
           </div>
           <div class="property-body">
             <div class="property-badges">
-              <span class="property-new">新着物件</span>
               <span class="property-status">満室稼働中</span>
             </div>
             <p class="property-name">福岡市西区小戸4丁目 一棟収益アパート</p>
@@ -182,7 +331,7 @@
           </div>
         </article>
 
-        <article class="property-card reveal" data-area="春日市" id="property-kasuga-yayoi">
+        <article class="property-card reveal" data-area="春日市" id="property-kasuga-yayoi" data-published="2026-08-24">
           <div class="property-photo">
             <img
               src="../assets/img/property-kasuga-yayoi.webp"
@@ -194,7 +343,6 @@
           </div>
           <div class="property-body">
             <div class="property-badges">
-              <span class="property-new">新着物件</span>
               <span class="property-status">満室稼働中</span>
             </div>
             <p class="property-name">春日市弥生5丁目 一棟収益アパート</p>
@@ -212,7 +360,7 @@
           </div>
         </article>
 
-        <article class="property-card reveal" data-area="東区" id="property-fukuoka-wajirohigashi">
+        <article class="property-card reveal" data-area="東区" id="property-fukuoka-wajirohigashi" data-published="2026-08-24">
           <!-- 問い合わせ対応用の参考データ（非公開・HP上には表示しない）
                交通：JR鹿児島本線「福工大前駅」徒歩6分
                年間賃料：327万8,400円
@@ -250,36 +398,7 @@
           </div>
         </article>
 
-        <article class="property-card reveal" data-area="久留米市" id="property-kurume-nishimachi">
-          <div class="property-photo">
-            <img
-              src="../assets/img/property-kurume-nishimachi.webp"
-              alt="久留米市西町の一棟収益アパート外観"
-              width="937"
-              height="792"
-              loading="lazy"
-            />
-          </div>
-          <div class="property-body">
-            <div class="property-badges">
-              <span class="property-status">8／9戸稼働中</span>
-            </div>
-            <p class="property-name">久留米市西町 一棟収益アパート</p>
-            <p class="property-yield-inline">満室想定利回り <strong>4.99%</strong></p>
-            <div class="property-price">1億5,000<small>万円（税込）</small></div>
-            <div class="property-meta">
-              <span>所在地：<strong>福岡県久留米市西町</strong></span>
-              <span>構造：<strong>木造 2階建</strong></span>
-              <span>築年月：<strong>2025年3月</strong></span>
-              <span>総戸数：<strong>9戸</strong></span>
-            </div>
-            <a href="contact.html?type=sale&amp;property=kurume-nishimachi#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
-            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
-            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
-          </div>
-        </article>
-
-        <article class="property-card reveal" data-area="宗像市" id="property-munakata-ishimaru">
+        <article class="property-card reveal" data-area="宗像市" id="property-munakata-ishimaru" data-published="2026-08-24">
           <!-- 問い合わせ対応用の参考データ（非公開・HP上には表示しない）
                交通：JR鹿児島本線「教育大前駅」徒歩9分
                現況利回り：7.38%
@@ -317,181 +436,59 @@
           </div>
         </article>
 
-        <article class="property-card reveal" data-area="北九州市" id="property-kitakyushu-kasuga">
+        <article class="property-card reveal" data-area="早良区" id="property-fukuoka-iikura" data-published="2026-08-23">
           <div class="property-photo">
             <img
-              src="../assets/img/property-kitakyushu-kasuga.webp"
-              alt="福岡県北九州市門司区春日町の一棟収益アパート外観"
-              width="1200"
-              height="900"
+              src="../assets/img/property-fukuoka-iikura.webp"
+              alt="福岡市早良区飯倉5丁目の一棟収益マンション外観"
+              width="937"
+              height="792"
               loading="lazy"
             />
           </div>
           <div class="property-body">
             <div class="property-badges">
-              <span class="property-new">新着物件</span>
               <span class="property-status">満室稼働中</span>
             </div>
-            <p class="property-name">北九州市門司区春日町 一棟収益アパート</p>
-            <p class="property-yield-inline">満室想定利回り <strong>8.00%</strong></p>
-            <div class="property-price">9,800<small>万円（税込）</small></div>
+            <p class="property-name">福岡市早良区飯倉5丁目 一棟収益マンション</p>
+            <p class="property-yield-inline">満室想定利回り <strong>5.41%</strong></p>
+            <div class="property-price">8億8,000<small>万円（税込）</small></div>
             <div class="property-meta">
-              <span>所在地：<strong>福岡県北九州市門司区春日町</strong></span>
-              <span>構造：<strong>木造</strong></span>
-              <span>築年月：<strong>2015年6月</strong></span>
-              <span>総戸数：<strong>10戸</strong></span>
+              <span>所在地：<strong>福岡市早良区飯倉5丁目</strong></span>
+              <span>構造：<strong>RC造 9階建</strong></span>
+              <span>築年月：<strong>2003年6月</strong></span>
+              <span>総戸数：<strong>57戸</strong></span>
             </div>
-            <a href="contact.html?type=sale&amp;property=kitakyushu-kasuga#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <a href="contact.html?type=sale&amp;property=fukuoka-iikura#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
             <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
             <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
           </div>
         </article>
 
-        <article class="property-card reveal" data-area="北九州市" id="property-kitakyushu-kusuhashi">
+        <article class="property-card reveal" data-area="久留米市" id="property-kurume-nishimachi" data-published="2026-08-23">
           <div class="property-photo">
             <img
-              src="../assets/img/property-kitakyushu-kusuhashi.webp"
-              alt="福岡県北九州市八幡西区楠橋下方2丁目の一棟収益アパート外観"
-              width="1150"
-              height="862"
+              src="../assets/img/property-kurume-nishimachi.webp"
+              alt="久留米市西町の一棟収益アパート外観"
+              width="937"
+              height="792"
               loading="lazy"
             />
           </div>
           <div class="property-body">
             <div class="property-badges">
-              <span class="property-new">新着物件</span>
-              <span class="property-status">満室稼働中</span>
+              <span class="property-status">8／9戸稼働中</span>
             </div>
-            <p class="property-name">北九州市八幡西区楠橋下方2丁目 一棟収益アパート</p>
-            <p class="property-yield-inline">満室想定利回り <strong>7.97%</strong></p>
-            <div class="property-price">8,420<small>万円（税込）</small></div>
+            <p class="property-name">久留米市西町 一棟収益アパート</p>
+            <p class="property-yield-inline">満室想定利回り <strong>4.99%</strong></p>
+            <div class="property-price">1億5,000<small>万円（税込）</small></div>
             <div class="property-meta">
-              <span>所在地：<strong>福岡県北九州市八幡西区楠橋下方2丁目</strong></span>
-              <span>構造：<strong>木造</strong></span>
-              <span>築年月：<strong>2014年1月</strong></span>
-              <span>総戸数：<strong>10戸</strong></span>
+              <span>所在地：<strong>福岡県久留米市西町</strong></span>
+              <span>構造：<strong>木造 2階建</strong></span>
+              <span>築年月：<strong>2025年3月</strong></span>
+              <span>総戸数：<strong>9戸</strong></span>
             </div>
-            <a href="contact.html?type=sale&amp;property=kitakyushu-kusuhashi#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
-            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
-            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
-          </div>
-        </article>
-
-        <article class="property-card reveal" data-area="大阪市" id="property-osaka-owada">
-          <div class="property-photo">
-            <img
-              src="../assets/img/property-osaka-owada.webp"
-              alt="大阪府大阪市西淀川区大和田3丁目の一棟収益アパート外観"
-              width="1200"
-              height="900"
-              loading="lazy"
-            />
-          </div>
-          <div class="property-body">
-            <div class="property-badges">
-              <span class="property-new">新着物件</span>
-              <span class="property-status">満室稼働中</span>
-            </div>
-            <p class="property-name">大阪市西淀川区大和田3丁目 一棟収益アパート</p>
-            <p class="property-yield-inline">満室想定利回り <strong>6.11%</strong></p>
-            <div class="property-price">2億2,500<small>万円</small></div>
-            <div class="property-meta">
-              <span>所在地：<strong>大阪府大阪市西淀川区大和田3丁目</strong></span>
-              <span>構造：<strong>木造 ガルバリウム鋼板葺 3階建</strong></span>
-              <span>築年月：<strong>2023年3月</strong></span>
-              <span>総戸数：<strong>15戸</strong></span>
-            </div>
-            <a href="contact.html?type=sale&amp;property=osaka-owada#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
-            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
-            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
-          </div>
-        </article>
-
-        <article class="property-card reveal" data-area="大阪市" id="property-osaka-yakino">
-          <div class="property-photo">
-            <img
-              src="../assets/img/property-osaka-yakino.webp"
-              alt="大阪府大阪市鶴見区焼野2丁目の一棟収益アパート外観"
-              width="637"
-              height="478"
-              loading="lazy"
-            />
-          </div>
-          <div class="property-body">
-            <div class="property-badges">
-              <span class="property-new">新着物件</span>
-              <span class="property-status">満室稼働中</span>
-            </div>
-            <p class="property-name">大阪市鶴見区焼野2丁目 一棟収益アパート</p>
-            <p class="property-yield-inline">満室想定利回り <strong>7.01%</strong></p>
-            <div class="property-price">1億5,900<small>万円</small></div>
-            <div class="property-meta">
-              <span>所在地：<strong>大阪府大阪市鶴見区焼野2丁目</strong></span>
-              <span>構造：<strong>木造 ガルバリウム鋼板葺3階建</strong></span>
-              <span>築年月：<strong>2018年6月</strong></span>
-              <span>総戸数：<strong>12戸</strong></span>
-            </div>
-            <a href="contact.html?type=sale&amp;property=osaka-yakino#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
-            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
-            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
-          </div>
-        </article>
-
-        <article class="property-card reveal" data-area="札幌市" id="property-hokkaido-sapporo">
-          <div class="property-photo">
-            <img
-              src="../assets/img/property-hokkaido-sapporo.webp"
-              alt="北海道札幌市北区北二十六条西5丁目の一棟収益マンション外観"
-              width="1200"
-              height="900"
-              loading="lazy"
-            />
-          </div>
-          <div class="property-body">
-            <div class="property-badges">
-              <span class="property-new">新着物件</span>
-              <span class="property-status">満室稼働中</span>
-            </div>
-            <p class="property-name">札幌市北区北二十六条西5丁目 一棟収益マンション</p>
-            <p class="property-yield-inline">満室想定利回り <strong>7.06%</strong></p>
-            <div class="property-price">1億8,400<small>万円（税込）</small></div>
-            <div class="property-meta">
-              <span>所在地：<strong>北海道札幌市北区北二十六条西5丁目</strong></span>
-              <span>構造：<strong>鉄筋コンクリート造 陸屋根7階建</strong></span>
-              <span>築年月：<strong>2004年1月</strong></span>
-              <span>総戸数：<strong>20戸</strong></span>
-            </div>
-            <a href="contact.html?type=sale&amp;property=hokkaido-sapporo#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
-            <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
-            <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
-          </div>
-        </article>
-
-        <article class="property-card reveal" data-area="佐賀市" id="property-saga-kanno">
-          <div class="property-photo">
-            <img
-              src="../assets/img/property-saga-kanno.webp"
-              alt="佐賀県佐賀市神野西3丁目の一棟収益アパート3棟外観"
-              width="392"
-              height="294"
-              loading="lazy"
-            />
-          </div>
-          <div class="property-body">
-            <div class="property-badges">
-              <span class="property-new">新着物件</span>
-              <span class="property-status">15／18戸稼働中</span>
-            </div>
-            <p class="property-name">佐賀市神野西3丁目 一棟収益アパート3棟</p>
-            <p class="property-yield-inline">満室想定利回り <strong>9.95%</strong></p>
-            <div class="property-price">7,800<small>万円（税込）</small></div>
-            <div class="property-meta">
-              <span>所在地：<strong>佐賀県佐賀市神野西3丁目</strong></span>
-              <span>構造：<strong>木造スレート葺2階建</strong></span>
-              <span>築年月：<strong>1994年1月</strong></span>
-              <span>総戸数：<strong>18戸</strong></span>
-            </div>
-            <a href="contact.html?type=sale&amp;property=saga-kanno#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
+            <a href="contact.html?type=sale&amp;property=kurume-nishimachi#contact-form" class="btn btn-gold btn-sm btn-block property-cta">詳細資料を問い合わせる</a>
             <p class="property-note">物件名・詳細所在地はお問い合わせ後にご案内します。</p>
             <p class="property-disclaimer">記載内容および稼働状況は掲載時点の情報です。現況と異なる場合は現況を優先しますので、最新状況はお問い合わせください。満室想定年間賃料および利回りは、将来の賃料収入を保証するものではありません。</p>
           </div>
@@ -602,6 +599,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
 </button>
 
-<script src="../assets/js/main.js?v=2"></script>
+<script src="../assets/js/main.js?v=3"></script>
 </body>
 </html>

@@ -332,6 +332,58 @@
     });
   });
 
+  /* Property listing (bukken page): newest-first order and an automatic
+     "新着物件" badge, both driven by each card's data-published="YYYY-MM-DD"
+     (the publish date, judged in Japan time). A card is "new" while at most
+     30 days have passed since its publish date; from the 31st day on only the
+     badge is dropped and the card stays. Ties keep the existing DOM order, and
+     since the filter below only toggles visibility, filtered views stay sorted. */
+  const bukkenGrid = document.querySelector(".bukken-grid");
+  if (bukkenGrid) {
+    const NEW_DAYS = 30;
+    const jstToday = new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Tokyo",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(new Date());
+    const dayNumber = (ymd) => {
+      const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(ymd || "");
+      return m ? Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000 : NaN;
+    };
+    const todayNum = dayNumber(jstToday);
+
+    const items = [...bukkenGrid.querySelectorAll(":scope > .property-card")].map((el, index) => ({
+      el,
+      index,
+      published: dayNumber(el.dataset.published),
+    }));
+
+    items.forEach(({ el, published }) => {
+      const badges = el.querySelector(".property-badges");
+      if (!badges) return;
+      const existing = badges.querySelector(".property-new");
+      const isNew = !Number.isNaN(published) && todayNum - published <= NEW_DAYS;
+      if (isNew && !existing) {
+        const badge = document.createElement("span");
+        badge.className = "property-new";
+        badge.textContent = "新着物件";
+        badges.insertBefore(badge, badges.firstChild);
+      } else if (!isNew && existing) {
+        existing.remove();
+      }
+    });
+
+    items
+      .slice()
+      .sort((a, b) => {
+        const pa = Number.isNaN(a.published) ? -Infinity : a.published;
+        const pb = Number.isNaN(b.published) ? -Infinity : b.published;
+        return pb - pa || a.index - b.index;
+      })
+      .forEach(({ el }) => bukkenGrid.appendChild(el));
+  }
+
   /* Property listing filter (bukken page) */
   const toolbar = document.querySelector(".bukken-toolbar");
   if (toolbar) {

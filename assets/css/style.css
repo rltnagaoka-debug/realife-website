@@ -1111,6 +1111,9 @@ button {
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 12px;
+  /* Same height with or without the (auto-expiring) 新着 badge, so card
+     contents stay aligned across a row: 11px × 1.85 line-height + 2 × 6px padding */
+  min-height: calc(11px * 1.85 + 12px);
 }
 .property-new {
   display: inline-block;
