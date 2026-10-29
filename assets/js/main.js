@@ -425,7 +425,9 @@
       return arr;
     };
 
-    fetch(listUrl.href, { credentials: "same-origin" })
+    /* "no-cache" = revalidate every time (cheap 304), so a newly added listing
+       shows up on the top page right away instead of after the 10-minute cache. */
+    fetch(listUrl.href, { credentials: "same-origin", cache: "no-cache" })
       .then((res) => {
         if (!res.ok) throw new Error("list unavailable");
         return res.text();
