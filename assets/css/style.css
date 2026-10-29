@@ -1259,7 +1259,8 @@ button {
   #property-fukuoka-wajirohigashi .property-name,
   #property-fukuoka-odo .property-name,
   #property-munakata-ishimaru .property-name,
-  #property-munakata-hirai .property-name {
+  #property-munakata-hirai .property-name,
+  #property-chikugo-mizuta .property-name {
     min-height: 2.6em;
     display: flex;
     align-items: flex-end;
