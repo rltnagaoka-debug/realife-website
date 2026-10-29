@@ -66,6 +66,7 @@
     "saga-kanno": "佐賀市神野西3丁目の一棟収益アパート3棟について",
     "fukuoka-hakozaki": "福岡市東区箱崎ふ頭3丁目の一棟収益マンションについて",
     "munakata-hinosato": "宗像市日の里7丁目の収益アパート2棟について",
+    "munakata-hirai": "宗像市平井2丁目の一棟収益アパートについて",
   };
   const contactPropertyParam = new URLSearchParams(location.search).get("property");
   if (contactPropertyParam && contactPropertyMap[contactPropertyParam]) {
@@ -117,6 +118,7 @@
       "saga-kanno": "佐賀市神野西3丁目 一棟収益アパート3棟",
       "fukuoka-hakozaki": "福岡市東区箱崎ふ頭3丁目 一棟収益マンション",
       "munakata-hinosato": "宗像市日の里7丁目 収益アパート2棟",
+      "munakata-hirai": "宗像市平井2丁目 一棟収益アパート",
     };
     const contactPropertyName =
       (contactPropertyParam && contactPropertyNames[contactPropertyParam]) || "";
